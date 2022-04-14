@@ -1,0 +1,70 @@
+﻿@model LibraryManagment.Models.ViewModels.PatronDetailViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+<div class="container">
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-md-4">
+                <h2>@Model.FullName</h2>
+                <div>
+                    <div>Library Card ID: @Model.LibraryCardId</div>
+                    <div>Address: @Model.Address</div>
+                    <div>Member Since: @Model.MemberSince.ToString("d")</div>
+                    <div>Home Library: @Model.HomeBranchName</div>
+                    @if(@Model.OverdueFees > 0)
+                    {
+                        <div>Current Fees Due: @Model.OverdueFees</div>
+                    }
+                    else
+                    {
+                        <div>No fees due Currently</div>
+                    }
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h4>Assets currently checked out:</h4>
+                @if (Model.AssetsCheckedOut.Any())
+                {
+                    <ul>
+                        @foreach(var item in @Model.AssetsCheckedOut)
+                        {
+                            <li>Title: @item.LibraryAsset.Title</li>
+                            <ul>
+                                <li>Since: @item.Since.ToString("yy-dd-MM")</li>
+                                <li>Due: @item.Until.ToString("yy-dd-MM")</li>
+                            </ul>  
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <div>No Checked out items </div>
+                }
+            </div>
+               <div class="col-md-4">
+                <h4>Assets currently on hold:</h4>
+                @if (Model.Holds.Any())
+                {
+                    <ul>
+                        @foreach(var item in @Model.Holds)
+                        {
+                            <li>Title: @item.LibraryAsset.Title - Placed: @item.HoldPlaced.ToString("yy/dd/MM")</li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <div>No Holds</div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

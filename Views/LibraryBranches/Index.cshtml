@@ -1,0 +1,27 @@
+﻿@model IEnumerable<LibraryManagment.Models.LibraryBranch>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+  <div class="row">
+        <p><a asp-action="Create">Create New</a></p>
+        @foreach (var item in Model)
+        {
+            <div class="col-md-6 col-lg-4">
+            <div class="card " style="width: 20rem;">
+                <img src="@item.ImageUrl" class="card-img-top" alt="@item.ImageUrl">
+                <div class="card-body">
+                    <h5 class="card-title" >@item.Name</h5>
+                    <div style="height: 200px">
+                        <p class="card-text" >@item.Description</p>
+                    </div>
+                    <a type="button" class="btn btn-outline-primary" asp-action="Details" asp-route-id="@item.Id">
+                        <i class="bi bi-eye"></i>  Show Details</a>
+                </div>
+            </div>
+            </div>
+        }
+  </div>

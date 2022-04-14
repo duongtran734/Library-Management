@@ -1,0 +1,42 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.card {
+    margin: 0 auto; /* Added */
+    float: none; /* Added */
+    margin-bottom: 10px; /* Added */
+}
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
+
+tbody tr:hover {
+    background-color: rgba(0,0,0,.075);
+}
+
+/*Asset Details*/
+.itemLabel {
+    font-weight:bold;
+}
+.itemValue{
+    text-align:right;
+    font-size:0.8em;
+}

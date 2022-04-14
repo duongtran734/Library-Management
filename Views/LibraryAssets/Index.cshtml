@@ -1,0 +1,33 @@
+﻿@using LibraryManagment.Models.ViewModels
+@*@model IEnumerable<LibraryManagment.Models.LibraryAsset>*@
+@model IEnumerable<AssetsIndexViewModel>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">@Html.DisplayNameFor(model => model.ImgUrl)</th>
+      <th scope="col">@Html.DisplayNameFor(model => model.Title)</th>
+      <th scope="col">Author/Director</th>
+      <th scope="col">Dewey Call Number</th>
+    </tr>
+  </thead>
+  <tbody>
+        @foreach(var item in Model)
+        {
+                <tr>
+                    <td><a asp-action="Details" asp-route-id="@item.Id" ><img src="@item.ImgUrl" class="card-img-top" alt="no image" style="width:25%; height: 30%"></a></td>
+                    <td>@item.Title</td>
+                    <td>@item.AuthorOrDirector</td>
+                    <td>@item.DeweyCallNumber</td>
+                </tr>
+        }
+  </tbody>
+</table>
